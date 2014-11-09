@@ -429,6 +429,7 @@
 				3DCFDD111A0F7BA70052E11F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DCFDD121A0F7BA70052E11F /* Build configuration list for PBXNativeTarget "MDIncrementalImageView DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +438,7 @@
 				3DCFDD141A0F7BA70052E11F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

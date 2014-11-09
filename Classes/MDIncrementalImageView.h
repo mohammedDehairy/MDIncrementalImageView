@@ -24,6 +24,9 @@
     NSMutableData *imageData ;
     CGImageSourceRef imageSource;
     NSInteger expectedLength;
+    NSURLConnection *currentConnection;
+    
+    NSString *currentLoadingUrl;
 }
 @property(nonatomic,readonly)UIActivityIndicatorView *loadingIndicator;
 @property(nonatomic)BOOL showLoadingIndicatorWhileLoading;

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MDIncrementalImageView.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    NSArray *dataSource;
+}
 
 @end
 

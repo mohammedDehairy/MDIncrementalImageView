@@ -11,8 +11,23 @@
 @implementation MDIncrementalImageView
 -(void)setImageUrl:(NSURL *)imageUrl
 {
+    // discard the previous connection
+    if(currentConnection)
+    {
+        [currentConnection cancel];
+    }
+    
+    // set the currentLoadingUrl string to compare it to the url string of the connection each time data is recieved to discard the loading if mismatch found
+    currentLoadingUrl = imageUrl.absoluteString;
+    
+    //reset current image
+    self.image = nil;
+    
+    
     if(_showLoadingIndicatorWhileLoading)
     {
+        //show the loading indicator
+        
         if(!_loadingIndicator)
         {
             CGFloat width = self.bounds.size.width*0.4;
@@ -24,7 +39,7 @@
         [self startLoadingIndicator];
     }
     
-    
+    // initialize the placeholder data
     imageData = [NSMutableData data];
     
     // construct the options Dictionary
@@ -46,14 +61,25 @@
     
     
     // start the connection
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:imageUrl] delegate:self startImmediately:NO];
-    [connection start];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:imageUrl];
+    request.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    
+    currentConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+    [currentConnection start];
     
     
     
 }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    //if the image view is reused in a table view for example to load another image  previous image is discarded
+    if(![currentLoadingUrl isEqualToString:connection.currentRequest.URL.absoluteString])
+    {
+        [connection cancel];
+        [self cleanUp];
+        return;
+    }
+    
     // append new Data
     [imageData appendData:data];
     
@@ -78,9 +104,7 @@
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     // clean up
-    CFRelease(imageSource);
-    imageData = nil;
-    [self stopLoadingIndicator];
+    [self cleanUp];
     
     // inform delegate that loading failed
     if([_delegate respondsToSelector:@selector(incrementalImageView:didFailWithError:)])
@@ -98,9 +122,7 @@
     self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
     
     // clean up
-    CFRelease(imageSource);
-    imageData = nil;
-    [self stopLoadingIndicator];
+    [self cleanUp];
     
     //inform delegate that loading finshed successfully
     if([_delegate respondsToSelector:@selector(incrementalImageView:didFinishLoadingWithImage:)])
@@ -108,7 +130,13 @@
         [_delegate incrementalImageView:self didFinishLoadingWithImage:self.image];
     }
 }
-
+-(void)cleanUp
+{
+    // clean up
+    CFRelease(imageSource);
+    imageData = nil;
+    [self stopLoadingIndicator];
+}
 -(void)startLoadingIndicator
 {
     if(!_loadingIndicator.superview)
