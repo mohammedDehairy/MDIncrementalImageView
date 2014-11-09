@@ -13,13 +13,13 @@
 {
     if(_showLoadingIndicatorWhileLoading)
     {
-        if(!loadingIndicator)
+        if(!_loadingIndicator)
         {
-            CGFloat width = self.bounds.size.width*0.2;
+            CGFloat width = self.bounds.size.width*0.4;
             
-            loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
-            loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-            loadingIndicator.layer.cornerRadius = 10;
+            _loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
+            _loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+            _loadingIndicator.layer.cornerRadius = width*0.1;
         }
         [self startLoadingIndicator];
     }
@@ -87,19 +87,19 @@
 
 -(void)startLoadingIndicator
 {
-    if(!loadingIndicator.superview)
+    if(!_loadingIndicator.superview)
     {
-        [self addSubview:loadingIndicator];
+        [self addSubview:_loadingIndicator];
     }
-    [loadingIndicator startAnimating];
+    [_loadingIndicator startAnimating];
 }
 -(void)stopLoadingIndicator
 {
-    if(loadingIndicator.superview)
+    if(_loadingIndicator.superview)
     {
-        [loadingIndicator removeFromSuperview];
+        [_loadingIndicator removeFromSuperview];
     }
-    [loadingIndicator stopAnimating];
+    [_loadingIndicator stopAnimating];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

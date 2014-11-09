@@ -14,8 +14,8 @@
     NSMutableData *imageData ;
     CGImageSourceRef imageSource;
     
-    UIActivityIndicatorView *loadingIndicator;
 }
+@property(nonatomic,readonly)UIActivityIndicatorView *loadingIndicator;
 @property(nonatomic)BOOL showLoadingIndicatorWhileLoading;
 -(void)setImageUrl:(NSURL *)imageUrl;
 @end
