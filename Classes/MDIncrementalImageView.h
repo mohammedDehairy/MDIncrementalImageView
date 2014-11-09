@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ImageIO/ImageIO.h>
+//#import <ImageIO/ImageIO.h>
 
 @class MDIncrementalImageView;
 
@@ -25,7 +25,6 @@
     long long expectedLength;
     NSURLConnection *currentConnection;
     
-    NSString *currentLoadingUrl;
 }
 @property(nonatomic,readonly)UIActivityIndicatorView *loadingIndicator;
 @property(nonatomic)BOOL showLoadingIndicatorWhileLoading;

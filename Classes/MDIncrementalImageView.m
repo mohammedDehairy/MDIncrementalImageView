@@ -17,9 +17,6 @@
         [currentConnection cancel];
     }
     
-    // set the currentLoadingUrl string to compare it to the url string of the connection each time data is recieved to discard the loading if mismatch found
-    currentLoadingUrl = imageUrl.absoluteString;
-    
     //reset current image
     self.image = nil;
     
@@ -47,8 +44,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:imageUrl];
     request.cachePolicy = NSURLRequestUseProtocolCachePolicy;
     
-    currentConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-    [currentConnection start];
+    currentConnection = [NSURLConnection connectionWithRequest:request delegate:self];
     
     
     
@@ -56,7 +52,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     //if the image view is reused in a table view for example to load another image  previous image is discarded
-    if(![currentLoadingUrl isEqualToString:connection.currentRequest.URL.absoluteString])
+    if(connection != currentConnection)
     {
         [connection cancel];
         [self cleanUp];
