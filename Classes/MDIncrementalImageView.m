@@ -12,8 +12,26 @@
 -(void)setImageUrl:(NSURL *)imageUrl
 {
     imageData = [NSMutableData data];
-    imageSource = CGImageSourceCreateIncremental(nil);
     
+    // construct the options Dictionary
+    CFStringRef myKeys[1];
+    CFTypeRef   myValues[1];
+    
+    // set caching on
+    myKeys[0]   = kCGImageSourceShouldCache;
+    myValues[0] = (CFTypeRef)kCFBooleanTrue;
+    
+    CFDictionaryRef options = CFDictionaryCreate(NULL, (const void**)myKeys, (const void**)myValues, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+
+    // create incremental Image source with the options dictionary
+    imageSource = CGImageSourceCreateIncremental(options);
+    
+    // cleaning up by releasing the options dictionary
+    CFRelease(options);
+    
+    
+    
+    // start the connection
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:imageUrl] delegate:self startImmediately:NO];
     [connection start];
     
@@ -37,6 +55,9 @@
     CGImageSourceUpdateData(imageSource, (CFDataRef)imageData, YES);
     
     self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
+    
+    CFRelease(imageSource);
+    imageData = nil;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
