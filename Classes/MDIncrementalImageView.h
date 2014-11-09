@@ -22,8 +22,7 @@
 @interface MDIncrementalImageView : UIImageView<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 {
     NSMutableData *imageData ;
-    CGImageSourceRef imageSource;
-    NSInteger expectedLength;
+    long long expectedLength;
     NSURLConnection *currentConnection;
     
     NSString *currentLoadingUrl;

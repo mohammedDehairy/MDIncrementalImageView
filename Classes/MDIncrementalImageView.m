@@ -42,23 +42,6 @@
     // initialize the placeholder data
     imageData = [NSMutableData data];
     
-    // construct the options Dictionary
-    CFStringRef myKeys[1];
-    CFTypeRef   myValues[1];
-    
-    // set caching on
-    myKeys[0]   = kCGImageSourceShouldCache;
-    myValues[0] = (CFTypeRef)kCFBooleanTrue;
-    
-    CFDictionaryRef options = CFDictionaryCreate(NULL, (const void**)myKeys, (const void**)myValues, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-
-    // create incremental Image source with the options dictionary
-    imageSource = CGImageSourceCreateIncremental(options);
-    
-    // cleaning up by releasing the options dictionary
-    CFRelease(options);
-    
-    
     
     // start the connection
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:imageUrl];
@@ -83,11 +66,8 @@
     // append new Data
     [imageData appendData:data];
     
-    // update image Source
-    CGImageSourceUpdateData(imageSource, (CFDataRef)imageData, NO);
-    
     // show the partially loaded image
-    self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
+    self.image = [UIImage imageWithData:imageData];
     
     
     //inform delegate with the progress ratio
@@ -115,11 +95,9 @@
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    //update the image source with a flag that the image loading complete
-    CGImageSourceUpdateData(imageSource, (CFDataRef)imageData, YES);
     
     // show the full image
-    self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
+    self.image = [UIImage imageWithData:imageData];
     
     // clean up
     [self cleanUp];
@@ -133,7 +111,6 @@
 -(void)cleanUp
 {
     // clean up
-    CFRelease(imageSource);
     imageData = nil;
     [self stopLoadingIndicator];
 }
