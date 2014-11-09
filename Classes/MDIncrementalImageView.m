@@ -63,6 +63,17 @@
     // show the partially loaded image
     self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
     
+    
+    //inform delegate with the progress ratio
+    if([_delegate respondsToSelector:@selector(incrementalImageView:didLoadDataWithRatio:)])
+    {
+        [_delegate incrementalImageView:self didLoadDataWithRatio:(data.length/expectedLength)];
+    }
+    
+}
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    expectedLength = response.expectedContentLength;
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
@@ -70,6 +81,13 @@
     CFRelease(imageSource);
     imageData = nil;
     [self stopLoadingIndicator];
+    
+    // inform delegate that loading failed
+    if([_delegate respondsToSelector:@selector(incrementalImageView:didFailWithError:)])
+    {
+        [_delegate incrementalImageView:self didFailWithError:error];
+    }
+    
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
@@ -83,6 +101,12 @@
     CFRelease(imageSource);
     imageData = nil;
     [self stopLoadingIndicator];
+    
+    //inform delegate that loading finshed successfully
+    if([_delegate respondsToSelector:@selector(incrementalImageView:didFinishLoadingWithImage:)])
+    {
+        [_delegate incrementalImageView:self didFinishLoadingWithImage:self.image];
+    }
 }
 
 -(void)startLoadingIndicator

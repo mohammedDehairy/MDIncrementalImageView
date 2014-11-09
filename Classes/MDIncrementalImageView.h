@@ -9,13 +9,25 @@
 #import <UIKit/UIKit.h>
 #import <ImageIO/ImageIO.h>
 
+@class MDIncrementalImageView;
+
+@protocol MDIncrementalImageViewDelegate <NSObject>
+
+-(void)incrementalImageView:(MDIncrementalImageView*)imageView didLoadDataWithRatio:(CGFloat)ratio;
+-(void)incrementalImageView:(MDIncrementalImageView*)imageView didFinishLoadingWithImage:(UIImage*)image;
+-(void)incrementalImageView:(MDIncrementalImageView*)imageView didFailWithError:(NSError*)error;
+
+@end
+
 @interface MDIncrementalImageView : UIImageView<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 {
     NSMutableData *imageData ;
     CGImageSourceRef imageSource;
-    
+    NSInteger expectedLength;
 }
 @property(nonatomic,readonly)UIActivityIndicatorView *loadingIndicator;
 @property(nonatomic)BOOL showLoadingIndicatorWhileLoading;
+@property(nonatomic,weak)id<MDIncrementalImageViewDelegate> delegate;
+
 -(void)setImageUrl:(NSURL *)imageUrl;
 @end
