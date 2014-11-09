@@ -16,5 +16,6 @@
     
     UIActivityIndicatorView *loadingIndicator;
 }
+@property(nonatomic)BOOL showLoadingIndicatorWhileLoading;
 -(void)setImageUrl:(NSURL *)imageUrl;
 @end

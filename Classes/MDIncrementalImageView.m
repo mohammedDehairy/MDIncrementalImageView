@@ -11,15 +11,19 @@
 @implementation MDIncrementalImageView
 -(void)setImageUrl:(NSURL *)imageUrl
 {
-    if(!loadingIndicator)
+    if(_showLoadingIndicatorWhileLoading)
     {
-        CGFloat width = self.bounds.size.width*0.2;
-        
-        loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
-        loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-        loadingIndicator.layer.cornerRadius = 10;
+        if(!loadingIndicator)
+        {
+            CGFloat width = self.bounds.size.width*0.2;
+            
+            loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
+            loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+            loadingIndicator.layer.cornerRadius = 10;
+        }
+        [self startLoadingIndicator];
     }
-    [self startLoadingIndicator];
+    
     
     imageData = [NSMutableData data];
     

@@ -20,6 +20,7 @@
     MDIncrementalImageView *imageView = [[MDIncrementalImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
+    imageView.showLoadingIndicatorWhileLoading = YES;
     
     [imageView setImageUrl:[NSURL URLWithString:@"http://vpnhotlist.com/wp-content/uploads/2014/03/image.jpg"]];
 }
