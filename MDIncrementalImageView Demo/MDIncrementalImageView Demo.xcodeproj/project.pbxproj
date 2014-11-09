@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DCFDCF21A0F7BA60052E11F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFDCF11A0F7BA60052E11F /* main.m */; };
+		3DCFDCF51A0F7BA60052E11F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFDCF41A0F7BA60052E11F /* AppDelegate.m */; };
+		3DCFDCF81A0F7BA60052E11F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFDCF71A0F7BA60052E11F /* ViewController.m */; };
+		3DCFDCFB1A0F7BA60052E11F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFDCF91A0F7BA60052E11F /* Main.storyboard */; };
+		3DCFDCFD1A0F7BA60052E11F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFDCFC1A0F7BA60052E11F /* Images.xcassets */; };
+		3DCFDD001A0F7BA60052E11F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFDCFE1A0F7BA60052E11F /* LaunchScreen.xib */; };
+		3DCFDD0C1A0F7BA70052E11F /* MDIncrementalImageView_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFDD0B1A0F7BA70052E11F /* MDIncrementalImageView_DemoTests.m */; };
+		3DCFDD181A0F7BB20052E11F /* MDIncrementalImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFDD171A0F7BB20052E11F /* MDIncrementalImageView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DCFDD061A0F7BA70052E11F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DCFDCE41A0F7BA60052E11F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DCFDCEB1A0F7BA60052E11F;
+			remoteInfo = "MDIncrementalImageView Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DCFDCEC1A0F7BA60052E11F /* MDIncrementalImageView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MDIncrementalImageView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DCFDCF01A0F7BA60052E11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DCFDCF11A0F7BA60052E11F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3DCFDCF31A0F7BA60052E11F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3DCFDCF41A0F7BA60052E11F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3DCFDCF61A0F7BA60052E11F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3DCFDCF71A0F7BA60052E11F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3DCFDCFA1A0F7BA60052E11F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DCFDCFC1A0F7BA60052E11F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DCFDCFF1A0F7BA60052E11F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3DCFDD051A0F7BA70052E11F /* MDIncrementalImageView DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MDIncrementalImageView DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DCFDD0A1A0F7BA70052E11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DCFDD0B1A0F7BA70052E11F /* MDIncrementalImageView_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDIncrementalImageView_DemoTests.m; sourceTree = "<group>"; };
+		3DCFDD161A0F7BB20052E11F /* MDIncrementalImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDIncrementalImageView.h; sourceTree = "<group>"; };
+		3DCFDD171A0F7BB20052E11F /* MDIncrementalImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDIncrementalImageView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DCFDCE91A0F7BA60052E11F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DCFDD021A0F7BA70052E11F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DCFDCE31A0F7BA60052E11F = {
+			isa = PBXGroup;
+			children = (
+				3DCFDD151A0F7BB20052E11F /* Classes */,
+				3DCFDCEE1A0F7BA60052E11F /* MDIncrementalImageView Demo */,
+				3DCFDD081A0F7BA70052E11F /* MDIncrementalImageView DemoTests */,
+				3DCFDCED1A0F7BA60052E11F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DCFDCED1A0F7BA60052E11F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDCEC1A0F7BA60052E11F /* MDIncrementalImageView Demo.app */,
+				3DCFDD051A0F7BA70052E11F /* MDIncrementalImageView DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DCFDCEE1A0F7BA60052E11F /* MDIncrementalImageView Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDCF31A0F7BA60052E11F /* AppDelegate.h */,
+				3DCFDCF41A0F7BA60052E11F /* AppDelegate.m */,
+				3DCFDCF61A0F7BA60052E11F /* ViewController.h */,
+				3DCFDCF71A0F7BA60052E11F /* ViewController.m */,
+				3DCFDCF91A0F7BA60052E11F /* Main.storyboard */,
+				3DCFDCFC1A0F7BA60052E11F /* Images.xcassets */,
+				3DCFDCFE1A0F7BA60052E11F /* LaunchScreen.xib */,
+				3DCFDCEF1A0F7BA60052E11F /* Supporting Files */,
+			);
+			path = "MDIncrementalImageView Demo";
+			sourceTree = "<group>";
+		};
+		3DCFDCEF1A0F7BA60052E11F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDCF01A0F7BA60052E11F /* Info.plist */,
+				3DCFDCF11A0F7BA60052E11F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DCFDD081A0F7BA70052E11F /* MDIncrementalImageView DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDD0B1A0F7BA70052E11F /* MDIncrementalImageView_DemoTests.m */,
+				3DCFDD091A0F7BA70052E11F /* Supporting Files */,
+			);
+			path = "MDIncrementalImageView DemoTests";
+			sourceTree = "<group>";
+		};
+		3DCFDD091A0F7BA70052E11F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDD0A1A0F7BA70052E11F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DCFDD151A0F7BB20052E11F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3DCFDD161A0F7BB20052E11F /* MDIncrementalImageView.h */,
+				3DCFDD171A0F7BB20052E11F /* MDIncrementalImageView.m */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DCFDCEB1A0F7BA60052E11F /* MDIncrementalImageView Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DCFDD0F1A0F7BA70052E11F /* Build configuration list for PBXNativeTarget "MDIncrementalImageView Demo" */;
+			buildPhases = (
+				3DCFDCE81A0F7BA60052E11F /* Sources */,
+				3DCFDCE91A0F7BA60052E11F /* Frameworks */,
+				3DCFDCEA1A0F7BA60052E11F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MDIncrementalImageView Demo";
+			productName = "MDIncrementalImageView Demo";
+			productReference = 3DCFDCEC1A0F7BA60052E11F /* MDIncrementalImageView Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DCFDD041A0F7BA70052E11F /* MDIncrementalImageView DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DCFDD121A0F7BA70052E11F /* Build configuration list for PBXNativeTarget "MDIncrementalImageView DemoTests" */;
+			buildPhases = (
+				3DCFDD011A0F7BA70052E11F /* Sources */,
+				3DCFDD021A0F7BA70052E11F /* Frameworks */,
+				3DCFDD031A0F7BA70052E11F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DCFDD071A0F7BA70052E11F /* PBXTargetDependency */,
+			);
+			name = "MDIncrementalImageView DemoTests";
+			productName = "MDIncrementalImageView DemoTests";
+			productReference = 3DCFDD051A0F7BA70052E11F /* MDIncrementalImageView DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DCFDCE41A0F7BA60052E11F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "mohamed mohamed El Dehairy";
+				TargetAttributes = {
+					3DCFDCEB1A0F7BA60052E11F = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					3DCFDD041A0F7BA70052E11F = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 3DCFDCEB1A0F7BA60052E11F;
+					};
+				};
+			};
+			buildConfigurationList = 3DCFDCE71A0F7BA60052E11F /* Build configuration list for PBXProject "MDIncrementalImageView Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DCFDCE31A0F7BA60052E11F;
+			productRefGroup = 3DCFDCED1A0F7BA60052E11F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DCFDCEB1A0F7BA60052E11F /* MDIncrementalImageView Demo */,
+				3DCFDD041A0F7BA70052E11F /* MDIncrementalImageView DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DCFDCEA1A0F7BA60052E11F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DCFDCFB1A0F7BA60052E11F /* Main.storyboard in Resources */,
+				3DCFDD001A0F7BA60052E11F /* LaunchScreen.xib in Resources */,
+				3DCFDCFD1A0F7BA60052E11F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DCFDD031A0F7BA70052E11F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DCFDCE81A0F7BA60052E11F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DCFDD181A0F7BB20052E11F /* MDIncrementalImageView.m in Sources */,
+				3DCFDCF81A0F7BA60052E11F /* ViewController.m in Sources */,
+				3DCFDCF51A0F7BA60052E11F /* AppDelegate.m in Sources */,
+				3DCFDCF21A0F7BA60052E11F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DCFDD011A0F7BA70052E11F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DCFDD0C1A0F7BA70052E11F /* MDIncrementalImageView_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DCFDD071A0F7BA70052E11F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DCFDCEB1A0F7BA60052E11F /* MDIncrementalImageView Demo */;
+			targetProxy = 3DCFDD061A0F7BA70052E11F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DCFDCF91A0F7BA60052E11F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DCFDCFA1A0F7BA60052E11F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DCFDCFE1A0F7BA60052E11F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DCFDCFF1A0F7BA60052E11F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DCFDD0D1A0F7BA70052E11F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3DCFDD0E1A0F7BA70052E11F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DCFDD101A0F7BA70052E11F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MDIncrementalImageView Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3DCFDD111A0F7BA70052E11F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MDIncrementalImageView Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3DCFDD131A0F7BA70052E11F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MDIncrementalImageView DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MDIncrementalImageView Demo.app/MDIncrementalImageView Demo";
+			};
+			name = Debug;
+		};
+		3DCFDD141A0F7BA70052E11F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MDIncrementalImageView DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MDIncrementalImageView Demo.app/MDIncrementalImageView Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DCFDCE71A0F7BA60052E11F /* Build configuration list for PBXProject "MDIncrementalImageView Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DCFDD0D1A0F7BA70052E11F /* Debug */,
+				3DCFDD0E1A0F7BA70052E11F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DCFDD0F1A0F7BA70052E11F /* Build configuration list for PBXNativeTarget "MDIncrementalImageView Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DCFDD101A0F7BA70052E11F /* Debug */,
+				3DCFDD111A0F7BA70052E11F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3DCFDD121A0F7BA70052E11F /* Build configuration list for PBXNativeTarget "MDIncrementalImageView DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DCFDD131A0F7BA70052E11F /* Debug */,
+				3DCFDD141A0F7BA70052E11F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DCFDCE41A0F7BA60052E11F /* Project object */;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>68D46BF8-E8D5-4D36-BC82-E7CC90C1FB06</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MDIncrementalImageView Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>708C12991993099803E38D88696A8EB1EFBD80C6</key>
+		<string>https://github.com/mohammedDehairy/MDIncrementalImageView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MDIncrementalImageView Demo/MDIncrementalImageView Demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>708C12991993099803E38D88696A8EB1EFBD80C6</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mohammedDehairy/MDIncrementalImageView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>708C12991993099803E38D88696A8EB1EFBD80C6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>708C12991993099803E38D88696A8EB1EFBD80C6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MDIncrementalImageView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
