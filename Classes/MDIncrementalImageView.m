@@ -11,6 +11,16 @@
 @implementation MDIncrementalImageView
 -(void)setImageUrl:(NSURL *)imageUrl
 {
+    if(!loadingIndicator)
+    {
+        CGFloat width = self.bounds.size.width*0.2;
+        
+        loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
+        loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        loadingIndicator.layer.cornerRadius = 10;
+    }
+    [self startLoadingIndicator];
+    
     imageData = [NSMutableData data];
     
     // construct the options Dictionary
@@ -35,29 +45,57 @@
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:imageUrl] delegate:self startImmediately:NO];
     [connection start];
     
+    
+    
 }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    // append new Data
     [imageData appendData:data];
     
+    // update image Source
     CGImageSourceUpdateData(imageSource, (CFDataRef)imageData, NO);
     
+    // show the partially loaded image
     self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
     
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    // clean up
     CFRelease(imageSource);
     imageData = nil;
+    [self stopLoadingIndicator];
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    //update the image source with a flag that the image loading complete
     CGImageSourceUpdateData(imageSource, (CFDataRef)imageData, YES);
     
+    // show the full image
     self.image = [UIImage imageWithCGImage:CGImageSourceCreateImageAtIndex(imageSource, 0, nil)];
     
+    // clean up
     CFRelease(imageSource);
     imageData = nil;
+    [self stopLoadingIndicator];
+}
+
+-(void)startLoadingIndicator
+{
+    if(!loadingIndicator.superview)
+    {
+        [self addSubview:loadingIndicator];
+    }
+    [loadingIndicator startAnimating];
+}
+-(void)stopLoadingIndicator
+{
+    if(loadingIndicator.superview)
+    {
+        [loadingIndicator removeFromSuperview];
+    }
+    [loadingIndicator stopAnimating];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

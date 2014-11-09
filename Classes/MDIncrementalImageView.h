@@ -13,6 +13,8 @@
 {
     NSMutableData *imageData ;
     CGImageSourceRef imageSource;
+    
+    UIActivityIndicatorView *loadingIndicator;
 }
 -(void)setImageUrl:(NSURL *)imageUrl;
 @end
