@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <ImageIO/ImageIO.h>
 
 @class MDIncrementalImageView;
 
@@ -19,16 +18,8 @@
 
 @end
 
-@interface MDIncrementalImageView : UIImageView<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
-{
-    NSMutableData *imageData ;
-    long long expectedLength;
-    NSURLConnection *currentConnection;
-    
-}
-@property(nonatomic,readonly)UIActivityIndicatorView *loadingIndicator;
-@property(nonatomic)BOOL showLoadingIndicatorWhileLoading;
-@property(nonatomic,weak)id<MDIncrementalImageViewDelegate> delegate;
+@interface MDIncrementalImageView : UIImageView
 
--(void)setImageUrl:(NSURL *)imageUrl;
+-(void)setImageUrl:(NSURL *)imageUrl showLoadingIndicatorWhileLoading:(BOOL)indicator delegate:(id<MDIncrementalImageViewDelegate>)delegate;
+
 @end

@@ -48,7 +48,7 @@
     }
     
     MDIncrementalImageView *imageView = (MDIncrementalImageView*)[cell viewWithTag:111];
-    [imageView setImageUrl:[NSURL URLWithString:[dataSource objectAtIndex:indexPath.row]]];
+    [imageView setImageUrl:[NSURL URLWithString:[dataSource objectAtIndex:indexPath.row]] showLoadingIndicatorWhileLoading:YES delegate:nil];
     
     return cell;
 }
