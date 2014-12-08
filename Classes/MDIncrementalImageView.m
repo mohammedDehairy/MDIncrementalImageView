@@ -8,130 +8,109 @@
 
 #import "MDIncrementalImageView.h"
 
+@interface MDIncrementalImageView () <NSURLConnectionDelegate,NSURLConnectionDataDelegate>
+
+@property(nonatomic, strong) NSMutableData *imageData;
+@property(nonatomic) long long expectedLength;
+@property(nonatomic,strong) NSURLConnection *currentConnection;
+@property(nonatomic, strong)UIActivityIndicatorView *loadingIndicator;
+@property(nonatomic,weak)id<MDIncrementalImageViewDelegate> delegate;
+
+@end
+
 @implementation MDIncrementalImageView
--(void)setImageUrl:(NSURL *)imageUrl
+
+-(void)setImageUrl:(NSURL *)imageUrl showLoadingIndicatorWhileLoading:(BOOL)indicator delegate:(id<MDIncrementalImageViewDelegate>)delegate
 {
-    // discard the previous connection
-    if(currentConnection)
-    {
-        [currentConnection cancel];
-    }
-    
+	[self cleanUp];
+	
+	self.delegate = delegate;
+	
     //reset current image
     self.image = nil;
     
-    
-    if(_showLoadingIndicatorWhileLoading)
+    if(indicator)
     {
         //show the loading indicator
         
-        if(!_loadingIndicator)
+        if(!self.loadingIndicator)
         {
             CGFloat width = self.bounds.size.width*0.4;
             
-            _loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
-            _loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-            _loadingIndicator.layer.cornerRadius = width*0.1;
+            self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width-width)/2, (self.bounds.size.height-width)/2, width , width)];
+            self.loadingIndicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+            self.loadingIndicator.layer.cornerRadius = width*0.1;
         }
-        [self startLoadingIndicator];
+        [self addSubview:self.loadingIndicator];
+		[self.loadingIndicator startAnimating];
     }
     
     // initialize the placeholder data
-    imageData = [NSMutableData data];
+    self.imageData = [NSMutableData data];
     
     
     // start the connection
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:imageUrl];
     request.cachePolicy = NSURLRequestUseProtocolCachePolicy;
     
-    currentConnection = [NSURLConnection connectionWithRequest:request delegate:self];
-    
-    
-    
+    self.currentConnection = [NSURLConnection connectionWithRequest:request delegate:self];
 }
+
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    //if the image view is reused in a table view for example to load another image  previous image is discarded
-    if(connection != currentConnection)
-    {
-        [connection cancel];
-        [self cleanUp];
-        return;
-    }
-    
     // append new Data
-    [imageData appendData:data];
+    [self.imageData appendData:data];
     
     // show the partially loaded image
-    self.image = [UIImage imageWithData:imageData];
+    self.image = [UIImage imageWithData:self.imageData];
     
     
     //inform delegate with the progress ratio
-    if([_delegate respondsToSelector:@selector(incrementalImageView:didLoadDataWithRatio:)])
+    if([self.delegate respondsToSelector:@selector(incrementalImageView:didLoadDataWithRatio:)])
     {
-        [_delegate incrementalImageView:self didLoadDataWithRatio:(data.length/expectedLength)];
+        [self.delegate incrementalImageView:self didLoadDataWithRatio:(data.length/self.expectedLength)];
     }
-    
 }
+
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    expectedLength = response.expectedContentLength;
+    self.expectedLength = response.expectedContentLength;
 }
+
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    // clean up
-    [self cleanUp];
-    
     // inform delegate that loading failed
-    if([_delegate respondsToSelector:@selector(incrementalImageView:didFailWithError:)])
+    if([self.delegate respondsToSelector:@selector(incrementalImageView:didFailWithError:)])
     {
-        [_delegate incrementalImageView:self didFailWithError:error];
+        [self.delegate incrementalImageView:self didFailWithError:error];
     }
-    
+
+	[self cleanUp];
 }
+
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    
     // show the full image
-    self.image = [UIImage imageWithData:imageData];
-    
-    // clean up
-    [self cleanUp];
+    self.image = [UIImage imageWithData:self.imageData];
     
     //inform delegate that loading finshed successfully
-    if([_delegate respondsToSelector:@selector(incrementalImageView:didFinishLoadingWithImage:)])
+    if([self.delegate respondsToSelector:@selector(incrementalImageView:didFinishLoadingWithImage:)])
     {
-        [_delegate incrementalImageView:self didFinishLoadingWithImage:self.image];
+        [self.delegate incrementalImageView:self didFinishLoadingWithImage:self.image];
     }
+	
+	[self cleanUp];
 }
+
 -(void)cleanUp
 {
-    // clean up
-    imageData = nil;
-    [self stopLoadingIndicator];
+	self.delegate = nil;
+	[self.currentConnection cancel];
+	self.currentConnection = nil;
+    self.imageData = nil;
+	[self.loadingIndicator removeFromSuperview];
+	[self.loadingIndicator stopAnimating];
+	self.loadingIndicator = nil;
 }
--(void)startLoadingIndicator
-{
-    if(!_loadingIndicator.superview)
-    {
-        [self addSubview:_loadingIndicator];
-    }
-    [_loadingIndicator startAnimating];
-}
--(void)stopLoadingIndicator
-{
-    if(_loadingIndicator.superview)
-    {
-        [_loadingIndicator removeFromSuperview];
-    }
-    [_loadingIndicator stopAnimating];
-}
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
